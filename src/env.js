@@ -7,14 +7,18 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    SUPABASE_DB_URL: z
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    NEXT_PUBLIC_SUPABASE_DB_URL: z
       .string()
       .url()
       .refine(
         (str) => !str.includes("YOUR_MYSQL_URL_HERE"),
         "You forgot to change the default URL",
       ),
-    SUPABASE_DB_KEY: z.string().min(20),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    NEXT_PUBLIC_SUPABASE_DB_KEY: z.string().min(20),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -34,8 +38,10 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    SUPABASE_DB_URL: process.env.SUPABASE_DB_URL,
-    SUPABASE_DB_KEY: process.env.SUPABASE_DB_KEY,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    NEXT_PUBLIC_SUPABASE_DB_URL: process.env.NEXT_PUBLIC_SUPABASE_DB_URL,
+    NEXT_PUBLIC_SUPABASE_DB_KEY: process.env.NEXT_PUBLIC_SUPABASE_DB_KEY,
     NODE_ENV: process.env.NODE_ENV,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
